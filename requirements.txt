@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+pydantic>=2
+pydantic-settings
+python-dotenv
+httpx
+chromadb>=1.0,<2
+langgraph>=1.0,<2
+streamlit>=1.40
+pytest
