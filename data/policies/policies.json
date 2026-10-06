@@ -1,0 +1,278 @@
+[
+  {
+    "source_id": "POLICY-REFUND-01",
+    "doc_type": "policy",
+    "title": "Refund Policy",
+    "policy_type": "refund",
+    "version": 1,
+    "content": "Defines when refunds are possible and what the support assistant may do with refund requests. Every refund needs approval from a human on the billing team.",
+    "rules": [
+      {
+        "rule_id": "POLICY-REFUND-01-R1",
+        "text": "Annual plans are eligible for a full refund if requested within 14 days of the first annual charge."
+      },
+      {
+        "rule_id": "POLICY-REFUND-01-R2",
+        "text": "Monthly plans are not refunded for partial or unused periods."
+      },
+      {
+        "rule_id": "POLICY-REFUND-01-R3",
+        "text": "Billing errors, such as two paid invoices for the same period, are eligible for a full refund."
+      },
+      {
+        "rule_id": "POLICY-REFUND-01-R4",
+        "text": "Plan downgrades produce account credit, not a cash refund."
+      },
+      {
+        "rule_id": "POLICY-REFUND-01-R5",
+        "text": "The support assistant must not issue, approve, or promise a refund."
+      },
+      {
+        "rule_id": "POLICY-REFUND-01-R6",
+        "text": "The support assistant may explain eligibility under this policy and must create a human handoff for every refund request."
+      },
+      {
+        "rule_id": "POLICY-REFUND-01-R7",
+        "text": "Refund requests must reference an invoice that belongs to the requesting account."
+      }
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-04-01",
+    "effective_from": "2026-01-01",
+    "deprecated_on": null,
+    "supersedes": null,
+    "active": true,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "POLICY-PASSWORD-RESET-01",
+    "doc_type": "policy",
+    "title": "Password Reset Policy",
+    "policy_type": "account_security",
+    "version": 1,
+    "content": "Defines how password resets are handled. Passwords and credentials are never visible to support.",
+    "rules": [
+      {
+        "rule_id": "POLICY-PASSWORD-RESET-01-R1",
+        "text": "The support assistant must never reveal, generate, set, or ask for a user's password."
+      },
+      {
+        "rule_id": "POLICY-PASSWORD-RESET-01-R2",
+        "text": "Password resets are done only through the self-service 'Forgot password' flow, which sends a single-use link to the registered email address."
+      },
+      {
+        "rule_id": "POLICY-PASSWORD-RESET-01-R3",
+        "text": "The support assistant must not send reset links to an email address other than the user's registered login email."
+      },
+      {
+        "rule_id": "POLICY-PASSWORD-RESET-01-R4",
+        "text": "For workspaces using SAML SSO, the user must reset the password with their identity provider."
+      },
+      {
+        "rule_id": "POLICY-PASSWORD-RESET-01-R5",
+        "text": "If a user cannot access their registered email or has lost 2FA and recovery codes with no Admin available, the request must be handed off to a human for identity verification."
+      },
+      {
+        "rule_id": "POLICY-PASSWORD-RESET-01-R6",
+        "text": "Passwords, reset links, API keys, and tokens must never appear in support responses, logs, or handoff records."
+      }
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-04-01",
+    "effective_from": "2026-01-01",
+    "deprecated_on": null,
+    "supersedes": null,
+    "active": true,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "POLICY-ACCOUNT-ACCESS-01",
+    "doc_type": "policy",
+    "title": "Account Access Policy",
+    "policy_type": "access_control",
+    "version": 1,
+    "content": "Defines whose data the support system may access and disclose.",
+    "rules": [
+      {
+        "rule_id": "POLICY-ACCOUNT-ACCESS-01-R1",
+        "text": "The support assistant may only access and disclose data for the account associated with the authenticated conversation."
+      },
+      {
+        "rule_id": "POLICY-ACCOUNT-ACCESS-01-R2",
+        "text": "Requests for another account's data (usage, invoices, members, workflows, or status) must be refused, even if the requester supplies that account's ID."
+      },
+      {
+        "rule_id": "POLICY-ACCOUNT-ACCESS-01-R3",
+        "text": "The support assistant must not confirm or deny whether another account, email address, or company exists in CloudFlow."
+      },
+      {
+        "rule_id": "POLICY-ACCOUNT-ACCESS-01-R4",
+        "text": "Ownership transfers and access changes for a missing Owner require human identity verification and must be handed off."
+      },
+      {
+        "rule_id": "POLICY-ACCOUNT-ACCESS-01-R5",
+        "text": "Billing and invoice details may only be discussed with the Owner or Billing role of the account."
+      }
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-04-01",
+    "effective_from": "2026-01-01",
+    "deprecated_on": null,
+    "supersedes": null,
+    "active": true,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "POLICY-SECURITY-INCIDENT-01",
+    "doc_type": "policy",
+    "title": "Security Incident Policy",
+    "policy_type": "security_incident",
+    "version": 1,
+    "content": "Defines how suspected security incidents are handled. Security incidents are always handled by humans.",
+    "rules": [
+      {
+        "rule_id": "POLICY-SECURITY-INCIDENT-01-R1",
+        "text": "Suspected security incidents include exposed or leaked API keys or credentials, unknown members or workflows, suspected account takeover, and unauthorized data access."
+      },
+      {
+        "rule_id": "POLICY-SECURITY-INCIDENT-01-R2",
+        "text": "The support assistant must create a handoff with priority 'critical' for every suspected security incident."
+      },
+      {
+        "rule_id": "POLICY-SECURITY-INCIDENT-01-R3",
+        "text": "The support assistant may advise immediate containment steps: revoke exposed API keys, remove unknown members, and reset passwords through the self-service flow."
+      },
+      {
+        "rule_id": "POLICY-SECURITY-INCIDENT-01-R4",
+        "text": "The support assistant must not investigate, attribute, or confirm the scope of an incident to the customer."
+      },
+      {
+        "rule_id": "POLICY-SECURITY-INCIDENT-01-R5",
+        "text": "Any secret the customer shares must not be repeated in the response or stored in handoff records."
+      }
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-04-01",
+    "effective_from": "2026-01-01",
+    "deprecated_on": null,
+    "supersedes": null,
+    "active": true,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "POLICY-DATA-PRIVACY-01",
+    "doc_type": "policy",
+    "title": "Data Privacy Policy",
+    "policy_type": "data_privacy",
+    "version": 1,
+    "content": "Defines how personal and sensitive information is handled by the support system.",
+    "rules": [
+      {
+        "rule_id": "POLICY-DATA-PRIVACY-01-R1",
+        "text": "The support assistant must only use the minimum personal data needed to resolve the request."
+      },
+      {
+        "rule_id": "POLICY-DATA-PRIVACY-01-R2",
+        "text": "Passwords, API keys, tokens, secrets, and full payment card numbers must never be stored, logged, or repeated back to the customer."
+      },
+      {
+        "rule_id": "POLICY-DATA-PRIVACY-01-R3",
+        "text": "Payment cards may only be referenced by brand and last four digits."
+      },
+      {
+        "rule_id": "POLICY-DATA-PRIVACY-01-R4",
+        "text": "Handoff records must contain redacted summaries; raw customer messages containing personal data or secrets must not be copied into them."
+      },
+      {
+        "rule_id": "POLICY-DATA-PRIVACY-01-R5",
+        "text": "Requests to delete personal data must be handed off to the human privacy team."
+      },
+      {
+        "rule_id": "POLICY-DATA-PRIVACY-01-R6",
+        "text": "Customer data must not be used in answers to other customers."
+      }
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-04-01",
+    "effective_from": "2026-01-01",
+    "deprecated_on": null,
+    "supersedes": null,
+    "active": true,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "POLICY-ESCALATION-01",
+    "doc_type": "policy",
+    "title": "Escalation and Human Handoff Policy",
+    "policy_type": "escalation",
+    "version": 1,
+    "content": "Defines when the support assistant must hand a conversation off to a human and what the handoff must contain.",
+    "rules": [
+      {
+        "rule_id": "POLICY-ESCALATION-01-R1",
+        "text": "A handoff is required when the customer explicitly asks for a human."
+      },
+      {
+        "rule_id": "POLICY-ESCALATION-01-R2",
+        "text": "A handoff is required for refund requests, suspected security incidents, ownership transfers, identity verification, legal or compliance requests, and personal-data deletion requests."
+      },
+      {
+        "rule_id": "POLICY-ESCALATION-01-R3",
+        "text": "A handoff is required when the assistant cannot find an authoritative source or tool result that answers the question."
+      },
+      {
+        "rule_id": "POLICY-ESCALATION-01-R4",
+        "text": "A handoff is required when the workspace is suspended and the customer disputes the suspension."
+      },
+      {
+        "rule_id": "POLICY-ESCALATION-01-R5",
+        "text": "Handoff priority is 'critical' for security incidents, 'high' for suspended workspaces or a complete production outage, 'normal' for billing and refunds, and 'low' otherwise."
+      },
+      {
+        "rule_id": "POLICY-ESCALATION-01-R6",
+        "text": "Every handoff must include a redacted customer summary, the evidence and tools used, what was attempted, and the unresolved questions."
+      },
+      {
+        "rule_id": "POLICY-ESCALATION-01-R7",
+        "text": "The assistant must tell the customer that the conversation was handed off and must not promise an outcome or response time beyond the plan's support tier."
+      }
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-04-01",
+    "effective_from": "2026-01-01",
+    "deprecated_on": null,
+    "supersedes": null,
+    "active": true,
+    "provenance": "synthetic",
+    "synthetic": true
+  }
+]

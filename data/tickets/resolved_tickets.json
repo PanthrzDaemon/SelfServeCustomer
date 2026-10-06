@@ -1,0 +1,584 @@
+[
+  {
+    "source_id": "TKT-1001",
+    "doc_type": "resolved_ticket",
+    "title": "Intermittent HTTP 429 from nightly sync job",
+    "category": "api_rate_limit",
+    "content": "Customer issue: Business workspace saw bursts of HTTP 429 (CF-429) when a nightly job started 400 requests in the same second.\n\nResolution: Explained the sliding 60-second window. Customer changed the client to read Retry-After and use exponential backoff with jitter, and spread the job's requests over the minute. No more 429s.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-05-04",
+    "effective_from": "2026-05-04",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1002",
+    "doc_type": "resolved_ticket",
+    "title": "Constant 429 responses after traffic growth",
+    "category": "api_rate_limit",
+    "content": "Customer issue: Pro workspace consistently peaked at about 450 requests/min against a 300/min limit after adding a new integration.\n\nResolution: Usage confirmed the peak was well above the Pro limit. Customer added caching and page_size=100, which brought the peak to about 280/min. Also explained upgrading to Business (1,000/min) if growth continues.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-06-11",
+    "effective_from": "2026-06-11",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1003",
+    "doc_type": "resolved_ticket",
+    "title": "429 errors: workaround using extra API keys",
+    "category": "api_rate_limit",
+    "content": "Customer issue: Customer on CloudFlow 4.2 hit 429 errors from one integration service.\n\nResolution: Because 4.2 rate limits are applied per API key, the agent advised creating a second API key and splitting traffic between two keys to double throughput. Customer confirmed the 429s stopped.",
+    "product_versions": [
+      "4.2"
+    ],
+    "authority_level": 4,
+    "last_updated": "2025-12-02",
+    "effective_from": "2025-12-02",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [
+      "KB-API-RATE-LIMITS-V43",
+      "RN-CLOUDFLOW-4.3"
+    ],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1004",
+    "doc_type": "resolved_ticket",
+    "title": "CF-503 errors during platform incident",
+    "category": "cf_503",
+    "content": "Customer issue: Multiple workflows failed with CF-503 for about 25 minutes.\n\nResolution: The status page showed a Workflow Engine incident at the time. The default 4.3 retry policy recovered most steps; the customer re-ran the 6 remaining failed runs from Workflow History after the incident was resolved.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-07-22",
+    "effective_from": "2026-07-22",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1005",
+    "doc_type": "resolved_ticket",
+    "title": "CF-503 on high-concurrency workflow",
+    "category": "cf_503",
+    "content": "Customer issue: Workflow fanning out to 200 parallel runs got intermittent CF-503 on CloudFlow 4.2; the status page was green.\n\nResolution: Engine capacity protection rejected the burst. Customer set workflow concurrency to 20 and turned on workflow-level retries (4.2: up to 3, 30 s delay). The errors stopped.",
+    "product_versions": [
+      "4.2"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-01-15",
+    "effective_from": "2026-01-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1006",
+    "doc_type": "resolved_ticket",
+    "title": "Salesforce connection fails with invalid_grant",
+    "category": "salesforce_auth",
+    "content": "Customer issue: After a Salesforce admin changed session policies, all Salesforce steps failed with CF-401 and 'invalid_grant'.\n\nResolution: The OAuth refresh token had been revoked. Customer clicked Integrations > Salesforce > Reconnect and authorized again, and the admin set the connected app's refresh-token policy to 'valid until revoked'. Failed runs were re-run.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-05-19",
+    "effective_from": "2026-05-19",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1007",
+    "doc_type": "resolved_ticket",
+    "title": "Salesforce INVALID_LOGIN after password change",
+    "category": "salesforce_auth",
+    "content": "Customer issue: Salesforce steps started failing with INVALID_LOGIN after the integration user's Salesforce password was changed.\n\nResolution: Advised the customer to re-enter the new Salesforce password and the new security token (emailed by Salesforce after the password reset) under Integrations > Salesforce. The connection was restored.",
+    "product_versions": [
+      "4.2"
+    ],
+    "authority_level": 4,
+    "last_updated": "2025-11-18",
+    "effective_from": "2025-11-18",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [
+      "KB-INT-SALESFORCE-V43",
+      "DEP-SALESFORCE-PASSWORD-AUTH"
+    ],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1008",
+    "doc_type": "resolved_ticket",
+    "title": "Slack step fails with channel_not_found",
+    "category": "slack_integration",
+    "content": "Customer issue: Workflow could not post to a private Slack channel; the step error was channel_not_found.\n\nResolution: The CloudFlow bot wasn't a member of the private channel. Customer ran /invite @CloudFlow in the channel and re-ran the failed runs.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-06-02",
+    "effective_from": "2026-06-02",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1009",
+    "doc_type": "resolved_ticket",
+    "title": "Slack missing_scope after admin policy change",
+    "category": "slack_integration",
+    "content": "Customer issue: Slack messages stopped with 'missing_scope' after the customer's Slack admin reviewed app permissions.\n\nResolution: The chat:write scope had been removed. Customer reconnected via Integrations > Slack > Reconnect and the Slack admin approved the scopes.",
+    "product_versions": [
+      "4.2"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-02-09",
+    "effective_from": "2026-02-09",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1010",
+    "doc_type": "resolved_ticket",
+    "title": "Run fails with CF-400 on a mapped field",
+    "category": "workflow_failure",
+    "content": "Customer issue: Workflow failed at the 'Create invoice' step with CF-400 'amount must be a number'.\n\nResolution: The value came from a webhook as text. Applied the to_number filter ({{trigger.body.amount | to_number}}) and re-ran the failed runs.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-04-28",
+    "effective_from": "2026-04-28",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1011",
+    "doc_type": "resolved_ticket",
+    "title": "Workflow switched off automatically",
+    "category": "workflow_failure",
+    "content": "Customer issue: Customer's workflow was switched Off unexpectedly.\n\nResolution: The workflow failed 20 times in a row because its Google Sheets connection had lost access, so it was auto-disabled. Customer shared the sheet with the connected account again and switched the workflow back On. Recommended setting up failure alerts.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-08-14",
+    "effective_from": "2026-08-14",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1012",
+    "doc_type": "resolved_ticket",
+    "title": "Need to export 90 days of workflow history",
+    "category": "history_export",
+    "content": "Customer issue: Customer needed a single export covering the last 90 days of workflow history.\n\nResolution: Explained that exports are limited to CSV, 30 days, and 10,000 rows, and that there is no way to export a larger range or JSON. Customer ran three consecutive 30-day CSV exports.",
+    "product_versions": [
+      "4.2"
+    ],
+    "authority_level": 4,
+    "last_updated": "2025-12-10",
+    "effective_from": "2025-12-10",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [
+      "KB-GS-EXPORT-HISTORY-V43",
+      "RN-CLOUDFLOW-4.3"
+    ],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1013",
+    "doc_type": "resolved_ticket",
+    "title": "Step times out after 300 seconds",
+    "category": "timeout",
+    "content": "Customer issue: Data-processing step consistently failed with CF-408 after 300 seconds on CloudFlow 4.2.\n\nResolution: On 4.2 the step timeout is fixed at 300 seconds. Customer split processing into batches of 500 rows using a loop and the 'Trigger workflow' step. Runs now complete.",
+    "product_versions": [
+      "4.2"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-01-27",
+    "effective_from": "2026-01-27",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1014",
+    "doc_type": "resolved_ticket",
+    "title": "Long-running enrichment step needs more time",
+    "category": "timeout",
+    "content": "Customer issue: Enrichment step calling a slow external API timed out with CF-408 at 300 seconds.\n\nResolution: On 4.3, raised the step timeout to 600 seconds in Step settings > Timeout and raised the HTTP request timeout to 90 seconds. Confirmed the step is idempotent before relying on the default retries.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-06-23",
+    "effective_from": "2026-06-23",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1015",
+    "doc_type": "resolved_ticket",
+    "title": "Failed steps are not retried",
+    "category": "workflow_failure",
+    "content": "Customer issue: Customer asked why transient HTTP 502 errors from their API failed the whole run.\n\nResolution: Explained that CloudFlow never retries failed steps automatically and there is no backoff option. Customer built a manual retry loop with a 'Delay' step and a branch.",
+    "product_versions": [
+      "4.2"
+    ],
+    "authority_level": 4,
+    "last_updated": "2025-10-30",
+    "effective_from": "2025-10-30",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [
+      "KB-ADV-RETRY-V43",
+      "RN-CLOUDFLOW-4.3"
+    ],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1016",
+    "doc_type": "resolved_ticket",
+    "title": "Workflow runs missing from history",
+    "category": "missing_data",
+    "content": "Customer issue: Customer on the Free plan couldn't find runs from two weeks earlier.\n\nResolution: Free plan history retention is 7 days and older runs are permanently deleted. Support couldn't restore them. Customer upgraded to Pro (30 days) and set up regular exports.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-03-05",
+    "effective_from": "2026-03-05",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1017",
+    "doc_type": "resolved_ticket",
+    "title": "Step output empty in later step",
+    "category": "missing_data",
+    "content": "Customer issue: A Slack message showed blank values for a customer tier field.\n\nResolution: The lookup step was in a branch that wasn't taken, so it was skipped. Customer added a default filter ({{steps.lookup.output.tier | default: \"standard\"}}).",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-07-08",
+    "effective_from": "2026-07-08",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1018",
+    "doc_type": "resolved_ticket",
+    "title": "Payment failed: card expired",
+    "category": "failed_payment",
+    "content": "Customer issue: Workspace became past_due after an invoice failed with reason card_expired.\n\nResolution: Owner added a new card under Settings > Billing > Payment method and clicked 'Retry payment' on the failed invoice. Payment succeeded and the workspace returned to active.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-08-03",
+    "effective_from": "2026-08-03",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1019",
+    "doc_type": "resolved_ticket",
+    "title": "Payment failed: authentication required",
+    "category": "failed_payment",
+    "content": "Customer issue: Invoice failed with authentication_required even though the card was valid.\n\nResolution: The customer's bank requires 3-D Secure. Customer clicked 'Retry payment' and completed the bank verification. Payment succeeded.",
+    "product_versions": [
+      "4.2"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-02-17",
+    "effective_from": "2026-02-17",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1020",
+    "doc_type": "resolved_ticket",
+    "title": "Unexpected proration charge after upgrade",
+    "category": "billing",
+    "content": "Customer issue: Customer asked about an extra charge in the middle of the billing period.\n\nResolution: Explained that upgrading from Pro to Business charges a prorated amount for the remaining days immediately. The invoice proration line matched the 12 remaining days.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-05-27",
+    "effective_from": "2026-05-27",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1021",
+    "doc_type": "resolved_ticket",
+    "title": "Possible duplicate charge",
+    "category": "billing",
+    "content": "Customer issue: Customer saw two card charges after retrying a failed payment.\n\nResolution: Only one invoice had status paid. The second item was a pending bank authorization from the failed attempt, which disappeared within 4 business days. No refund was needed.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-09-02",
+    "effective_from": "2026-09-02",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1022",
+    "doc_type": "resolved_ticket",
+    "title": "Refund request for annual plan within 14 days",
+    "category": "refund",
+    "content": "Customer issue: Customer bought an annual Business plan by mistake and asked for a refund 5 days after the charge.\n\nResolution: Eligible under the refund policy (annual plan, within 14 days). Support created a handoff; a billing team member approved the full refund, which reached the card in 7 business days.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-04-20",
+    "effective_from": "2026-04-20",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1023",
+    "doc_type": "resolved_ticket",
+    "title": "Refund request for unused month on monthly plan",
+    "category": "refund",
+    "content": "Customer issue: Customer on a monthly Pro plan asked for a refund of the current month after cancelling.\n\nResolution: Not eligible: monthly plans are not refunded for partial or unused periods. Confirmed the cancellation takes effect at the end of the period with no further charges. The customer accepted.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-06-30",
+    "effective_from": "2026-06-30",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1024",
+    "doc_type": "resolved_ticket",
+    "title": "Owner left company, cannot access account",
+    "category": "account_access",
+    "content": "Customer issue: The workspace Owner left the company; remaining Admins needed ownership transferred.\n\nResolution: Self-service transfer requires the Owner. Escalated to a human support agent, who verified the company's identity with the documented verification process and transferred ownership to the requested Admin.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-07-14",
+    "effective_from": "2026-07-14",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1025",
+    "doc_type": "resolved_ticket",
+    "title": "Password reset email not received",
+    "category": "password_reset",
+    "content": "Customer issue: User requested a password reset several times but got no email.\n\nResolution: The company mail filter quarantined mail from no-reply@cloudflow.example. IT allowed the sender, and the user requested one new link (limit 3 per hour) and reset the password. Support never handled the password.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-05-08",
+    "effective_from": "2026-05-08",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1026",
+    "doc_type": "resolved_ticket",
+    "title": "Password reset not possible with SSO",
+    "category": "password_reset",
+    "content": "Customer issue: User couldn't reset their password from the CloudFlow login page.\n\nResolution: The workspace uses SAML SSO, so CloudFlow does not store the password. The user reset it with their company identity provider.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-08-21",
+    "effective_from": "2026-08-21",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1027",
+    "doc_type": "resolved_ticket",
+    "title": "Locked out after lost 2FA device",
+    "category": "account_access",
+    "content": "Customer issue: User lost their phone and recovery codes and couldn't sign in.\n\nResolution: A workspace Admin reset the user's 2FA from Settings > Team. The user signed in and set up 2FA again.",
+    "product_versions": [
+      "4.2"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-01-09",
+    "effective_from": "2026-01-09",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1028",
+    "doc_type": "resolved_ticket",
+    "title": "Runs rejected with CF-402",
+    "category": "usage_limits",
+    "content": "Customer issue: All new runs were rejected with CF-402 near the end of the month.\n\nResolution: The Pro workspace had used all 25,000 monthly runs. Explained that the quota resets on the billing date and unused runs don't roll over. The customer upgraded to Business for a higher quota.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-09-18",
+    "effective_from": "2026-09-18",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1029",
+    "doc_type": "resolved_ticket",
+    "title": "API usage close to limit",
+    "category": "usage_limits",
+    "content": "Customer issue: Customer asked whether a peak of exactly 300 requests/min on Pro was a problem.\n\nResolution: Being exactly at the limit is allowed, but any burst above it returns 429. Recommended keeping headroom below the limit using X-RateLimit-Remaining and backoff.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-09-25",
+    "effective_from": "2026-09-25",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "TKT-1030",
+    "doc_type": "resolved_ticket",
+    "title": "GitHub webhook signature failures",
+    "category": "integrations",
+    "content": "Customer issue: Webhook trigger returned 401 for requests from the customer's CI system.\n\nResolution: The CI system was signing with the old signing secret more than 24 hours after rotation. Customer updated the secret in CI; requests were accepted again.",
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 4,
+    "last_updated": "2026-06-05",
+    "effective_from": "2026-06-05",
+    "deprecated_on": null,
+    "supersedes": null,
+    "resolution_status": "resolved",
+    "conflicts_with": [],
+    "provenance": "synthetic",
+    "synthetic": true
+  }
+]

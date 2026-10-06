@@ -1,0 +1,1378 @@
+{
+  "version": 1,
+  "synthetic": true,
+  "sources": [
+    {
+      "source_id": "KB-GS-GETTING-STARTED",
+      "doc_type": "article",
+      "title": "Getting Started with CloudFlow",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-GS-CREATE-WORKFLOW",
+      "doc_type": "article",
+      "title": "Creating Your First Workflow",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-GS-RUN-WORKFLOW",
+      "doc_type": "article",
+      "title": "Running a Workflow",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-GS-WORKFLOW-HISTORY",
+      "doc_type": "article",
+      "title": "Managing Workflow History",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-GS-EXPORT-HISTORY-V43",
+      "doc_type": "article",
+      "title": "Exporting Workflow History (CloudFlow 4.3)",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-04-01",
+      "effective_from": "2026-04-01",
+      "deprecated_on": null,
+      "supersedes": "KB-GS-EXPORT-HISTORY-V42",
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-GS-EXPORT-HISTORY-V42",
+      "doc_type": "article",
+      "title": "Exporting Workflow History (CloudFlow 4.2)",
+      "product_versions": [
+        "4.2"
+      ],
+      "authority_level": 1,
+      "last_updated": "2025-11-03",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-ACC-PROFILE",
+      "doc_type": "article",
+      "title": "Managing Your Profile",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-ACC-TEAM-MEMBERS",
+      "doc_type": "article",
+      "title": "Managing Team Members",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-ACC-SETTINGS",
+      "doc_type": "article",
+      "title": "Account Settings",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-ACC-ROLES",
+      "doc_type": "article",
+      "title": "Account Roles and Permissions",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-ACC-PASSWORD-RESET",
+      "doc_type": "article",
+      "title": "Resetting Your Password",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-ACC-2FA",
+      "doc_type": "article",
+      "title": "Two-Factor Authentication and Account Lockouts",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-ACC-CANCEL",
+      "doc_type": "article",
+      "title": "Cancelling or Reactivating Your Account",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-BILL-PLANS",
+      "doc_type": "article",
+      "title": "CloudFlow Plans",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-04-01",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-BILL-INVOICE",
+      "doc_type": "article",
+      "title": "Understanding Your Invoice",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-BILL-FAILED-PAYMENTS",
+      "doc_type": "article",
+      "title": "Failed Payments",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-BILL-REFUND-POLICY",
+      "doc_type": "article",
+      "title": "Refund Policy",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-BILL-UPGRADE",
+      "doc_type": "article",
+      "title": "Upgrading Your Plan",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-BILL-USAGE-LIMITS",
+      "doc_type": "article",
+      "title": "Usage Limits and Quotas",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-04-01",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-API-AUTH",
+      "doc_type": "article",
+      "title": "API Authentication",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-API-RATE-LIMITS-V43",
+      "doc_type": "article",
+      "title": "API Rate Limits (CloudFlow 4.3)",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-04-01",
+      "effective_from": "2026-04-01",
+      "deprecated_on": null,
+      "supersedes": "KB-API-RATE-LIMITS-V42",
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-API-RATE-LIMITS-V42",
+      "doc_type": "article",
+      "title": "API Rate Limits (CloudFlow 4.2)",
+      "product_versions": [
+        "4.2"
+      ],
+      "authority_level": 1,
+      "last_updated": "2025-10-20",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-API-HTTP-429",
+      "doc_type": "article",
+      "title": "Handling HTTP 429 Too Many Requests",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-04-01",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-API-ERRORS",
+      "doc_type": "article",
+      "title": "API Errors",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-API-PAGINATION",
+      "doc_type": "article",
+      "title": "API Pagination",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-INT-SALESFORCE-V43",
+      "doc_type": "article",
+      "title": "Salesforce Integration (CloudFlow 4.3)",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-04-01",
+      "effective_from": "2026-04-01",
+      "deprecated_on": null,
+      "supersedes": "KB-INT-SALESFORCE-V42",
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-INT-SALESFORCE-V42",
+      "doc_type": "article",
+      "title": "Salesforce Integration (CloudFlow 4.2)",
+      "product_versions": [
+        "4.2"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-04-01",
+      "effective_from": "2025-09-15",
+      "deprecated_on": "2026-04-01",
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-INT-SLACK",
+      "doc_type": "article",
+      "title": "Slack Integration",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-INT-GITHUB",
+      "doc_type": "article",
+      "title": "GitHub Integration",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-INT-GOOGLE-SHEETS",
+      "doc_type": "article",
+      "title": "Google Sheets Integration",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-INT-WEBHOOKS",
+      "doc_type": "article",
+      "title": "Webhook Integration",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-TS-EXECUTION-FAILURES",
+      "doc_type": "article",
+      "title": "Workflow Execution Failures",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-TS-CF503",
+      "doc_type": "article",
+      "title": "CF-503 Errors",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-04-01",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-TS-TIMEOUTS",
+      "doc_type": "article",
+      "title": "Timeout Errors",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-04-01",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-TS-AUTH-FAILURES",
+      "doc_type": "article",
+      "title": "Authentication Failures",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-TS-MISSING-DATA",
+      "doc_type": "article",
+      "title": "Missing Workflow Data",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-ADV-CONFIG",
+      "doc_type": "article",
+      "title": "Advanced Workflow Configuration",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-ADV-RETRY-V43",
+      "doc_type": "article",
+      "title": "Workflow Retry Policies (CloudFlow 4.3)",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-04-01",
+      "effective_from": "2026-04-01",
+      "deprecated_on": null,
+      "supersedes": "KB-ADV-RETRY-V42",
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-ADV-RETRY-V42",
+      "doc_type": "article",
+      "title": "Workflow Retry Policies (CloudFlow 4.2)",
+      "product_versions": [
+        "4.2"
+      ],
+      "authority_level": 1,
+      "last_updated": "2025-10-20",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-ADV-BRANCHES",
+      "doc_type": "article",
+      "title": "Conditional Branches",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-ADV-VARIABLES",
+      "doc_type": "article",
+      "title": "Workflow Variables",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-ADV-MONITORING",
+      "doc_type": "article",
+      "title": "Workflow Monitoring",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-SEC-BEST-PRACTICES",
+      "doc_type": "article",
+      "title": "Security Best Practices",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-DATA-RETENTION",
+      "doc_type": "article",
+      "title": "Data Retention and Deletion",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "KB-SUPPORT-CONTACT",
+      "doc_type": "article",
+      "title": "Contacting CloudFlow Support",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-05-12",
+      "effective_from": "2025-09-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "RN-CLOUDFLOW-4.3",
+      "doc_type": "release_note",
+      "title": "CloudFlow 4.3 Release Notes",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 2,
+      "last_updated": "2026-04-01",
+      "effective_from": "2026-04-01",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "DEP-SALESFORCE-PASSWORD-AUTH",
+      "doc_type": "release_note",
+      "title": "Deprecation Notice: Salesforce Username-Password Authentication",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 2,
+      "last_updated": "2026-04-01",
+      "effective_from": "2026-04-01",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/articles/articles.json"
+    },
+    {
+      "source_id": "TKT-1001",
+      "doc_type": "resolved_ticket",
+      "title": "Intermittent HTTP 429 from nightly sync job",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-05-04",
+      "effective_from": "2026-05-04",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1002",
+      "doc_type": "resolved_ticket",
+      "title": "Constant 429 responses after traffic growth",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-06-11",
+      "effective_from": "2026-06-11",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1003",
+      "doc_type": "resolved_ticket",
+      "title": "429 errors: workaround using extra API keys",
+      "product_versions": [
+        "4.2"
+      ],
+      "authority_level": 4,
+      "last_updated": "2025-12-02",
+      "effective_from": "2025-12-02",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1004",
+      "doc_type": "resolved_ticket",
+      "title": "CF-503 errors during platform incident",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-07-22",
+      "effective_from": "2026-07-22",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1005",
+      "doc_type": "resolved_ticket",
+      "title": "CF-503 on high-concurrency workflow",
+      "product_versions": [
+        "4.2"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-01-15",
+      "effective_from": "2026-01-15",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1006",
+      "doc_type": "resolved_ticket",
+      "title": "Salesforce connection fails with invalid_grant",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-05-19",
+      "effective_from": "2026-05-19",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1007",
+      "doc_type": "resolved_ticket",
+      "title": "Salesforce INVALID_LOGIN after password change",
+      "product_versions": [
+        "4.2"
+      ],
+      "authority_level": 4,
+      "last_updated": "2025-11-18",
+      "effective_from": "2025-11-18",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1008",
+      "doc_type": "resolved_ticket",
+      "title": "Slack step fails with channel_not_found",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-06-02",
+      "effective_from": "2026-06-02",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1009",
+      "doc_type": "resolved_ticket",
+      "title": "Slack missing_scope after admin policy change",
+      "product_versions": [
+        "4.2"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-02-09",
+      "effective_from": "2026-02-09",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1010",
+      "doc_type": "resolved_ticket",
+      "title": "Run fails with CF-400 on a mapped field",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-04-28",
+      "effective_from": "2026-04-28",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1011",
+      "doc_type": "resolved_ticket",
+      "title": "Workflow switched off automatically",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-08-14",
+      "effective_from": "2026-08-14",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1012",
+      "doc_type": "resolved_ticket",
+      "title": "Need to export 90 days of workflow history",
+      "product_versions": [
+        "4.2"
+      ],
+      "authority_level": 4,
+      "last_updated": "2025-12-10",
+      "effective_from": "2025-12-10",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1013",
+      "doc_type": "resolved_ticket",
+      "title": "Step times out after 300 seconds",
+      "product_versions": [
+        "4.2"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-01-27",
+      "effective_from": "2026-01-27",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1014",
+      "doc_type": "resolved_ticket",
+      "title": "Long-running enrichment step needs more time",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-06-23",
+      "effective_from": "2026-06-23",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1015",
+      "doc_type": "resolved_ticket",
+      "title": "Failed steps are not retried",
+      "product_versions": [
+        "4.2"
+      ],
+      "authority_level": 4,
+      "last_updated": "2025-10-30",
+      "effective_from": "2025-10-30",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1016",
+      "doc_type": "resolved_ticket",
+      "title": "Workflow runs missing from history",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-03-05",
+      "effective_from": "2026-03-05",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1017",
+      "doc_type": "resolved_ticket",
+      "title": "Step output empty in later step",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-07-08",
+      "effective_from": "2026-07-08",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1018",
+      "doc_type": "resolved_ticket",
+      "title": "Payment failed: card expired",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-08-03",
+      "effective_from": "2026-08-03",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1019",
+      "doc_type": "resolved_ticket",
+      "title": "Payment failed: authentication required",
+      "product_versions": [
+        "4.2"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-02-17",
+      "effective_from": "2026-02-17",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1020",
+      "doc_type": "resolved_ticket",
+      "title": "Unexpected proration charge after upgrade",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-05-27",
+      "effective_from": "2026-05-27",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1021",
+      "doc_type": "resolved_ticket",
+      "title": "Possible duplicate charge",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-09-02",
+      "effective_from": "2026-09-02",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1022",
+      "doc_type": "resolved_ticket",
+      "title": "Refund request for annual plan within 14 days",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-04-20",
+      "effective_from": "2026-04-20",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1023",
+      "doc_type": "resolved_ticket",
+      "title": "Refund request for unused month on monthly plan",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-06-30",
+      "effective_from": "2026-06-30",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1024",
+      "doc_type": "resolved_ticket",
+      "title": "Owner left company, cannot access account",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-07-14",
+      "effective_from": "2026-07-14",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1025",
+      "doc_type": "resolved_ticket",
+      "title": "Password reset email not received",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-05-08",
+      "effective_from": "2026-05-08",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1026",
+      "doc_type": "resolved_ticket",
+      "title": "Password reset not possible with SSO",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-08-21",
+      "effective_from": "2026-08-21",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1027",
+      "doc_type": "resolved_ticket",
+      "title": "Locked out after lost 2FA device",
+      "product_versions": [
+        "4.2"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-01-09",
+      "effective_from": "2026-01-09",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1028",
+      "doc_type": "resolved_ticket",
+      "title": "Runs rejected with CF-402",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-09-18",
+      "effective_from": "2026-09-18",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1029",
+      "doc_type": "resolved_ticket",
+      "title": "API usage close to limit",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-09-25",
+      "effective_from": "2026-09-25",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "TKT-1030",
+      "doc_type": "resolved_ticket",
+      "title": "GitHub webhook signature failures",
+      "product_versions": [
+        "4.3"
+      ],
+      "authority_level": 4,
+      "last_updated": "2026-06-05",
+      "effective_from": "2026-06-05",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/tickets/resolved_tickets.json"
+    },
+    {
+      "source_id": "POLICY-REFUND-01",
+      "doc_type": "policy",
+      "title": "Refund Policy",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-04-01",
+      "effective_from": "2026-01-01",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/policies/policies.json"
+    },
+    {
+      "source_id": "POLICY-PASSWORD-RESET-01",
+      "doc_type": "policy",
+      "title": "Password Reset Policy",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-04-01",
+      "effective_from": "2026-01-01",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/policies/policies.json"
+    },
+    {
+      "source_id": "POLICY-ACCOUNT-ACCESS-01",
+      "doc_type": "policy",
+      "title": "Account Access Policy",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-04-01",
+      "effective_from": "2026-01-01",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/policies/policies.json"
+    },
+    {
+      "source_id": "POLICY-SECURITY-INCIDENT-01",
+      "doc_type": "policy",
+      "title": "Security Incident Policy",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-04-01",
+      "effective_from": "2026-01-01",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/policies/policies.json"
+    },
+    {
+      "source_id": "POLICY-DATA-PRIVACY-01",
+      "doc_type": "policy",
+      "title": "Data Privacy Policy",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-04-01",
+      "effective_from": "2026-01-01",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/policies/policies.json"
+    },
+    {
+      "source_id": "POLICY-ESCALATION-01",
+      "doc_type": "policy",
+      "title": "Escalation and Human Handoff Policy",
+      "product_versions": [
+        "4.2",
+        "4.3"
+      ],
+      "authority_level": 1,
+      "last_updated": "2026-04-01",
+      "effective_from": "2026-01-01",
+      "deprecated_on": null,
+      "supersedes": null,
+      "provenance": "synthetic",
+      "synthetic": true,
+      "file": "data/policies/policies.json"
+    }
+  ]
+}

@@ -1,0 +1,1050 @@
+[
+  {
+    "source_id": "KB-GS-GETTING-STARTED",
+    "doc_type": "article",
+    "title": "Getting Started with CloudFlow",
+    "category": "getting_started",
+    "content": "CloudFlow lets you automate work between apps with workflows made of a trigger and one or more steps.\n\n1. Sign in at https://app.cloudflow.example with the email address you registered.\n2. Open Settings > Workspace and set your workspace name and time zone. Schedules and history timestamps use this time zone.\n3. Connect at least one integration under Integrations (for example Slack or Google Sheets). Connections are shared by everyone in the workspace who has the Editor role or higher.\n4. Create a workflow from Workflows > New Workflow, or start from a template under Workflows > Templates.\n5. Invite teammates from Settings > Team. The Free plan includes 2 seats; paid plans include more (see \"CloudFlow Plans\").\n\nYour product version is shown under Settings > About (for example \"CloudFlow 4.3\"). Some behavior differs between CloudFlow 4.2 and 4.3, so include your version when you contact support.",
+    "tags": [
+      "onboarding",
+      "workspace"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-GS-CREATE-WORKFLOW",
+    "doc_type": "article",
+    "title": "Creating Your First Workflow",
+    "category": "getting_started",
+    "content": "To create a workflow:\n\n1. Go to Workflows > New Workflow and give it a descriptive name.\n2. Choose a trigger: Schedule (cron or interval), Webhook (an HTTPS endpoint CloudFlow generates), App Event (for example \"New Salesforce Lead\"), or Manual.\n3. Click \"Add step\" and choose an action, for example \"Send Slack message\" or \"Append row to Google Sheet\".\n4. Map fields from the trigger or earlier steps using the variable picker. References look like {{trigger.body.email}} or {{steps.lookup.output.id}}.\n5. Click \"Test step\" to run the step once with sample data. Fix any red validation messages before continuing.\n6. Click \"Save\", then switch the workflow toggle to \"On\".\n\nA workflow that is saved but switched Off never runs on its triggers; you can still start it manually. Drafts are saved automatically every 30 seconds while you edit.",
+    "tags": [
+      "workflow",
+      "builder"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-GS-RUN-WORKFLOW",
+    "doc_type": "article",
+    "title": "Running a Workflow",
+    "category": "getting_started",
+    "content": "Workflows run in three ways:\n\n- Automatically, when their trigger fires (schedule, webhook, or app event) and the workflow is switched On.\n- Manually, from the workflow page with \"Run now\". You can supply a JSON test payload.\n- Through the API: POST https://api.cloudflow.example/v2/workflows/{workflow_id}/runs with an optional JSON body. The response includes a run_id.\n\nEach run gets a run ID (format run_XXXXXXXX). Use it when contacting support.\n\nRun states are: queued, running, succeeded, failed, cancelled, and timed_out. A run stays queued while the account has reached its concurrent-run limit (Free 1, Pro 5, Business 25, Enterprise 100). Manually started runs and API-started runs count toward your monthly workflow-run quota just like triggered runs.\n\nTo stop a run in progress, open it under Workflow History and click \"Cancel run\". Steps that already completed are not rolled back.",
+    "tags": [
+      "workflow",
+      "runs",
+      "api"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-GS-WORKFLOW-HISTORY",
+    "doc_type": "article",
+    "title": "Managing Workflow History",
+    "category": "getting_started",
+    "content": "Workflow History (Workflows > History) lists every run with its status, start time, duration, and trigger.\n\n- Filter by workflow, status, or date range. Search by run ID.\n- Open a run to see each step's input, output, duration, and any error code.\n- Click \"Re-run\" on a failed run to run it again with the same trigger payload.\n\nHistory retention depends on your plan:\n- Free: 7 days\n- Pro: 30 days\n- Business: 90 days\n- Enterprise: 365 days\n\nRuns older than the retention period are permanently deleted and cannot be restored by support. Step inputs and outputs that CloudFlow detects as secrets (for example values in fields named password, token, or api_key) are masked as ******** in history.\n\nTo keep history longer than your retention period, export it regularly (see \"Exporting Workflow History\").",
+    "tags": [
+      "history",
+      "retention"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-GS-EXPORT-HISTORY-V43",
+    "doc_type": "article",
+    "title": "Exporting Workflow History (CloudFlow 4.3)",
+    "category": "getting_started",
+    "content": "Applies to CloudFlow 4.3.\n\nIn CloudFlow 4.3, exports run in the background and support larger date ranges:\n\n1. Go to Settings > Data > Export Workflow History.\n2. Choose a date range of up to 90 days per export. The range cannot start earlier than your plan's history retention allows.\n3. Choose the format: CSV or JSON. JSON includes step-level inputs and outputs; CSV includes one row per run.\n4. Click \"Start export\". When the export is ready, CloudFlow emails a download link to the user who started it. The link expires after 24 hours.\n\nThere is no row limit on 4.3 exports.\n\nYou can also export through the API: POST https://api.cloudflow.example/v2/history/exports with {\"from\": \"YYYY-MM-DD\", \"to\": \"YYYY-MM-DD\", \"format\": \"csv\" | \"json\"}, then poll GET /v2/history/exports/{export_id} until status is \"ready\".\n\nOnly users with the Admin or Owner role can export history. Masked secret values stay masked in exports.\n\nThe \"Export CSV\" button on the Workflow History page from CloudFlow 4.2 is no longer available in 4.3.",
+    "tags": [
+      "history",
+      "export",
+      "version-specific"
+    ],
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-04-01",
+    "effective_from": "2026-04-01",
+    "deprecated_on": null,
+    "supersedes": "KB-GS-EXPORT-HISTORY-V42",
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-GS-EXPORT-HISTORY-V42",
+    "doc_type": "article",
+    "title": "Exporting Workflow History (CloudFlow 4.2)",
+    "category": "getting_started",
+    "content": "Applies to CloudFlow 4.2 only. If you are on CloudFlow 4.3, see \"Exporting Workflow History (CloudFlow 4.3)\".\n\nIn CloudFlow 4.2:\n\n1. Open Workflows > History.\n2. Set a date range of up to 30 days.\n3. Click \"Export CSV\". The file downloads immediately in your browser.\n\nLimits in 4.2:\n- CSV format only.\n- Maximum 30 days per export.\n- Maximum 10,000 rows per export. Narrow the date range or filter by workflow if you hit this limit.\n\nTo export more than 30 days, run several exports with consecutive date ranges. Upgrading to CloudFlow 4.3 adds JSON exports and 90-day ranges.",
+    "tags": [
+      "history",
+      "export",
+      "version-specific"
+    ],
+    "product_versions": [
+      "4.2"
+    ],
+    "authority_level": 1,
+    "last_updated": "2025-11-03",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-ACC-PROFILE",
+    "doc_type": "article",
+    "title": "Managing Your Profile",
+    "category": "account",
+    "content": "Open the avatar menu > Profile to change:\n\n- Display name and avatar.\n- Notification preferences (run failure emails, weekly usage summary).\n- Your personal time zone, which overrides the workspace time zone for timestamps you see.\n\nTo change your login email, click \"Change email\". CloudFlow sends a confirmation link to the new address, and the change takes effect only after you click it. A notice is also sent to the old address.\n\nYou cannot change another user's profile. Admins can deactivate users from Settings > Team but cannot edit their personal details.",
+    "tags": [
+      "profile"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-ACC-TEAM-MEMBERS",
+    "doc_type": "article",
+    "title": "Managing Team Members",
+    "category": "account",
+    "content": "Admins and Owners manage team members from Settings > Team.\n\n- Invite: click \"Invite member\", enter an email address, and pick a role. Invitations expire after 7 days.\n- Change role: use the role dropdown next to the member.\n- Remove: click \"Remove\". The member immediately loses access. Workflows they created keep running and are reassigned to the Owner.\n\nEach active member and each pending invitation uses one seat. If you have no seats left, invitations are blocked until you remove a member or upgrade your plan.\n\nOnly the Owner can transfer ownership (Settings > Team > Transfer ownership). If the Owner has left the company and cannot sign in, ownership transfer requires identity verification by CloudFlow support staff; it cannot be done through self-service.",
+    "tags": [
+      "team",
+      "seats",
+      "ownership"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-ACC-SETTINGS",
+    "doc_type": "article",
+    "title": "Account Settings",
+    "category": "account",
+    "content": "Settings > Workspace controls workspace-wide options:\n\n- Workspace name and default time zone.\n- Data region (chosen at sign-up; cannot be changed afterward).\n- Security: require two-factor authentication for all members, set session timeout (1 to 24 hours), and configure SAML single sign-on (Business and Enterprise plans).\n- IP allowlist for API access (Enterprise plan).\n\nSettings > About shows your account ID (format ACC-XXXX), your plan, and your CloudFlow product version. Include your account ID when you contact support. Never include passwords or API keys.",
+    "tags": [
+      "settings",
+      "security"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-ACC-ROLES",
+    "doc_type": "article",
+    "title": "Account Roles and Permissions",
+    "category": "account",
+    "content": "CloudFlow has five roles:\n\n- Owner: everything, including billing, ownership transfer, and workspace deletion. Exactly one per workspace.\n- Admin: manage members, integrations, API keys, security settings, and exports. Cannot transfer ownership or delete the workspace.\n- Editor: create, edit, run, and delete workflows; use existing integration connections.\n- Viewer: view workflows and history; cannot run or edit.\n- Billing: view and pay invoices and change the payment method; no workflow access.\n\nAPI keys inherit the permissions of the role that created them. A key created by an Editor cannot manage members, for example.\n\nUsers only ever see data for workspaces they belong to. CloudFlow support also cannot share one customer's data with another customer.",
+    "tags": [
+      "roles",
+      "permissions",
+      "security"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-ACC-PASSWORD-RESET",
+    "doc_type": "article",
+    "title": "Resetting Your Password",
+    "category": "account",
+    "content": "To reset your password:\n\n1. Go to https://app.cloudflow.example/login and click \"Forgot password\".\n2. Enter your login email. If an account exists, a reset link is sent. The link expires after 60 minutes and works once.\n3. Choose a new password of at least 12 characters.\n\nIf you don't receive the email: check spam/quarantine folders, ask your IT team to allow mail from no-reply@cloudflow.example, and wait 5 minutes before requesting another link (requests are limited to 3 per hour).\n\nIf your workspace uses SAML single sign-on, CloudFlow does not store your password; reset it with your identity provider.\n\nCloudFlow staff and the support assistant can never see, tell you, or set your password. Never send your password to support.",
+    "tags": [
+      "password",
+      "login",
+      "security"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-ACC-2FA",
+    "doc_type": "article",
+    "title": "Two-Factor Authentication and Account Lockouts",
+    "category": "account",
+    "content": "Enable two-factor authentication (2FA) under Profile > Security using an authenticator app. Save the 10 recovery codes shown during setup; each works once.\n\nLost your 2FA device? Sign in with a recovery code, then set up 2FA again.\n\nLockouts: after 10 failed sign-in attempts within 15 minutes, the user is locked out for 30 minutes. The lockout clears automatically; support cannot shorten it.\n\nIf you have lost both your 2FA device and your recovery codes, a workspace Admin can reset your 2FA from Settings > Team. If you are the only Owner and Admin, contact support: a human support agent must verify your identity before 2FA can be reset.",
+    "tags": [
+      "2fa",
+      "lockout",
+      "security"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-ACC-CANCEL",
+    "doc_type": "article",
+    "title": "Cancelling or Reactivating Your Account",
+    "category": "account",
+    "content": "The Owner can cancel a paid subscription from Settings > Billing > Cancel plan.\n\n- Cancellation takes effect at the end of the current billing period. Workflows keep running until then.\n- After cancellation the workspace moves to status \"cancelled\": workflows are switched Off and API keys stop working, but data is kept for 30 days.\n- Within those 30 days, the Owner can reactivate from Settings > Billing > Reactivate, choosing any plan. Workflows must be switched back On manually.\n- After 30 days the workspace data is permanently deleted.\n\nCancelling does not automatically refund the current period; see \"Refund Policy\".",
+    "tags": [
+      "cancel",
+      "reactivate",
+      "billing"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-BILL-PLANS",
+    "doc_type": "article",
+    "title": "CloudFlow Plans",
+    "category": "billing",
+    "content": "CloudFlow has four plans. Prices are per month, billed monthly (annual billing saves 15%).\n\n| Plan | Price | API rate limit | Workflow runs / month | Seats | Support |\n|---|---|---|---|---|---|\n| Free | $0 | 60 requests/min | 1,000 | 2 | Community |\n| Pro | $49 | 300 requests/min | 25,000 | 10 | Standard (email, 1 business day) |\n| Business | $299 | 1,000 requests/min | 250,000 | 50 | Priority (4 business hours) |\n| Enterprise | $1,999 | 5,000 requests/min | 2,000,000 | 500 | Dedicated (1 hour, 24/7) |\n\nHistory retention is 7, 30, 90, and 365 days respectively. SAML SSO is available on Business and Enterprise.\n\nYour current plan is shown under Settings > Billing. For usage against these limits, see \"Usage Limits and Quotas\".",
+    "tags": [
+      "plans",
+      "pricing",
+      "limits"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-04-01",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-BILL-INVOICE",
+    "doc_type": "article",
+    "title": "Understanding Your Invoice",
+    "category": "billing",
+    "content": "Invoices are issued on your billing date each period and listed under Settings > Billing > Invoices (visible to Owner and Billing roles).\n\nEach invoice shows:\n- Invoice ID (format INV-YYYY-NNNN), date, amount, currency, and status (paid, failed, refunded, open).\n- Plan subscription line.\n- Proration lines if you changed plans mid-period. Upgrades are charged immediately for the remaining days; downgrades become a credit applied to the next invoice.\n- Tax, based on your billing address.\n- The card used, shown only by brand and last four digits.\n\nA pending authorization from your bank may briefly appear as a second charge when a payment is retried. It disappears within 3 to 5 business days and is not a duplicate charge unless two invoices show status \"paid\" for the same period.\n\nDownload a PDF with the \"Download\" button. To change the billing address or tax ID, edit Settings > Billing > Billing details; changes apply to future invoices only.",
+    "tags": [
+      "invoice",
+      "proration",
+      "tax"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-BILL-FAILED-PAYMENTS",
+    "doc_type": "article",
+    "title": "Failed Payments",
+    "category": "billing",
+    "content": "If a payment fails:\n\n1. The invoice status becomes \"failed\" and the workspace status becomes \"past_due\". Owners and Billing users get an email with the failure reason.\n2. CloudFlow retries the charge automatically 1, 3, and 7 days after the first failure.\n3. If all retries fail, there is a 14-day grace period. After that, the workspace is suspended: workflows stop running and API requests return CF-403.\n\nCommon failure reasons and fixes:\n- card_expired: add a new card under Settings > Billing > Payment method.\n- insufficient_funds: make sure funds are available, then click \"Retry payment\".\n- card_declined: your bank refused the charge. Contact your bank; corporate cards often block recurring international charges.\n- authentication_required: your bank requires 3-D Secure. Click \"Retry payment\" and complete the bank's verification.\n\nAfter you update the payment method, click \"Retry payment\" on the failed invoice to pay immediately instead of waiting for the next automatic retry. Once paid, the workspace returns to \"active\" within a few minutes. Suspended workspaces are reactivated automatically when the overdue invoice is paid.\n\nSupport cannot see full card numbers and will never ask for them.",
+    "tags": [
+      "payment",
+      "past_due",
+      "suspended"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-BILL-REFUND-POLICY",
+    "doc_type": "article",
+    "title": "Refund Policy",
+    "category": "billing",
+    "content": "Summary of CloudFlow's refund rules (the full rules are in policy POLICY-REFUND-01):\n\n- Annual plans: full refund if requested within 14 days of the first annual charge.\n- Monthly plans: no refunds for partial or unused periods. Cancelling stops future charges.\n- Billing errors (for example two paid invoices for the same period) are always refunded in full.\n- Downgrades produce account credit, not a cash refund.\n\nHow to request a refund: contact support with your account ID and the invoice ID. Every refund is reviewed and approved by a member of the CloudFlow billing team. The support assistant can explain eligibility but cannot issue or promise refunds.\n\nApproved refunds go back to the original payment method within 5 to 10 business days.",
+    "tags": [
+      "refund",
+      "billing",
+      "policy"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-BILL-UPGRADE",
+    "doc_type": "article",
+    "title": "Upgrading Your Plan",
+    "category": "billing",
+    "content": "The Owner can change plans under Settings > Billing > Change plan.\n\n- Upgrades take effect immediately. You are charged a prorated amount for the rest of the current period, and new limits (API rate limit, run quota, seats) apply within 1 minute.\n- Downgrades take effect at the start of the next billing period. If you use more seats than the lower plan allows, remove members first.\n- Moving to Enterprise requires a sales agreement; click \"Contact sales\".\n\nUpgrading is the right fix when you consistently exceed your API rate limit or monthly run quota. If you only exceed limits in short bursts, add retries with backoff first (see \"Handling HTTP 429\").\n\nWorkspaces with status past_due or suspended cannot upgrade until the overdue invoice is paid.",
+    "tags": [
+      "upgrade",
+      "downgrade",
+      "plans"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-BILL-USAGE-LIMITS",
+    "doc_type": "article",
+    "title": "Usage Limits and Quotas",
+    "category": "billing",
+    "content": "CloudFlow enforces two kinds of limits per workspace:\n\n1. Monthly workflow runs. Every run counts, whether triggered, manual, API-started, or a re-run. When the quota is reached, new runs are rejected with error CF-402 \"Monthly run quota exceeded\" until the next billing period or until you upgrade. Owners get warning emails at 80% and 100%.\n2. API rate limit, in requests per minute (see \"API Rate Limits\").\n\nWhere to check usage: Settings > Usage shows runs this period, peak API requests per minute, and your plan's limits. The peak value is the highest number of requests in any 60-second window during the period.\n\nBeing at exactly your limit is allowed; requests above it are rejected. If your peak is regularly at or near your limit, expect occasional 429 responses during bursts.\n\nQuotas reset on your billing date. Unused runs do not roll over.",
+    "tags": [
+      "usage",
+      "quota",
+      "limits"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-04-01",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-API-AUTH",
+    "doc_type": "article",
+    "title": "API Authentication",
+    "category": "api",
+    "content": "The CloudFlow API (https://api.cloudflow.example/v2) authenticates with API keys.\n\n1. Create a key in Settings > API Keys > New key (Admin or Owner). Keys start with cf_live_ (production) or cf_test_ (test mode).\n2. The full key is shown once. Store it in a secrets manager, never in source code, tickets, or chat messages.\n3. Send it in the Authorization header: Authorization: Bearer <YOUR_API_KEY>\n\nResponses:\n- 401 with code CF-401: the key is missing, malformed, revoked, or expired.\n- 403 with code CF-403: the key is valid but its role lacks permission, or the workspace is suspended.\n\nRotate keys at least every 90 days: create a new key, deploy it, then revoke the old one. If you think a key was exposed, revoke it immediately in Settings > API Keys and report it to support as a security incident.\n\nSupport never needs your API key. If you share one by mistake, revoke it.",
+    "tags": [
+      "api",
+      "authentication",
+      "keys",
+      "security"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-API-RATE-LIMITS-V43",
+    "doc_type": "article",
+    "title": "API Rate Limits (CloudFlow 4.3)",
+    "category": "api",
+    "content": "Applies to CloudFlow 4.3.\n\nAPI rate limits are set by plan: Free 60, Pro 300, Business 1,000, and Enterprise 5,000 requests per minute.\n\nHow limits are enforced in 4.3:\n- Limits apply per workspace (account), shared across all API keys. Creating more API keys does not increase your limit.\n- The limit is measured over a sliding 60-second window, not a calendar minute.\n- Every response includes X-RateLimit-Limit, X-RateLimit-Remaining, and X-RateLimit-Reset (Unix time) headers.\n- Requests over the limit get HTTP 429 with error code CF-429 and a Retry-After header (seconds).\n\nWorkflow runs started by triggers do not count toward the API rate limit; only calls to api.cloudflow.example do.\n\nIf you regularly exceed your limit, batch requests (for example use page_size=100), cache read results, spread scheduled jobs across the minute, or upgrade your plan. Check your peak usage under Settings > Usage.",
+    "tags": [
+      "api",
+      "rate-limit",
+      "version-specific"
+    ],
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-04-01",
+    "effective_from": "2026-04-01",
+    "deprecated_on": null,
+    "supersedes": "KB-API-RATE-LIMITS-V42",
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-API-RATE-LIMITS-V42",
+    "doc_type": "article",
+    "title": "API Rate Limits (CloudFlow 4.2)",
+    "category": "api",
+    "content": "Applies to CloudFlow 4.2 only. If you are on CloudFlow 4.3, see \"API Rate Limits (CloudFlow 4.3)\", because enforcement changed.\n\nPlan limits: Free 60, Pro 300, Business 1,000, and Enterprise 5,000 requests per minute.\n\nHow limits are enforced in 4.2:\n- Limits apply per API key.\n- The window is a fixed calendar minute that resets at the top of each minute (hh:mm:00).\n- Responses include X-RateLimit-Limit, X-RateLimit-Remaining, and X-RateLimit-Reset headers.\n- Requests over the limit get HTTP 429 with code CF-429. There is no Retry-After header in 4.2; wait until the X-RateLimit-Reset time.",
+    "tags": [
+      "api",
+      "rate-limit",
+      "version-specific"
+    ],
+    "product_versions": [
+      "4.2"
+    ],
+    "authority_level": 1,
+    "last_updated": "2025-10-20",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-API-HTTP-429",
+    "doc_type": "article",
+    "title": "Handling HTTP 429 Too Many Requests",
+    "category": "api",
+    "content": "HTTP 429 (error code CF-429) means you exceeded your API rate limit. The request was not processed and can be safely retried.\n\nRecommended client behavior:\n1. On CloudFlow 4.3, read the Retry-After header and wait that many seconds before retrying. On 4.2, wait until the time in X-RateLimit-Reset.\n2. Use exponential backoff with jitter for repeated 429s, for example 1s, 2s, 4s, 8s plus a random 0 to 500 ms, up to 5 attempts.\n3. Watch X-RateLimit-Remaining and slow down before it reaches 0.\n4. Don't retry in tight loops. Immediate retries count against your limit and make the problem worse.\n\nTo find out whether you are over your plan limit, compare peak requests per minute in Settings > Usage with your plan's limit. If your peak is above the limit, reduce traffic (batching, caching, spreading jobs) or upgrade.\n\nOn CloudFlow 4.3, limits are shared across all API keys in the workspace, so adding keys does not help.",
+    "tags": [
+      "api",
+      "429",
+      "rate-limit"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-04-01",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-API-ERRORS",
+    "doc_type": "article",
+    "title": "API Errors",
+    "category": "api",
+    "content": "Errors return JSON: {\"error\": {\"code\": \"CF-XXX\", \"message\": \"...\", \"request_id\": \"req_...\"}}. Include the request_id when contacting support.\n\n| HTTP | Code | Meaning | What to do |\n|---|---|---|---|\n| 400 | CF-400 | Invalid request body or parameters | Fix the request; the message names the field |\n| 401 | CF-401 | Missing, invalid, or revoked API key | Check the Authorization header; create a new key if needed |\n| 402 | CF-402 | Monthly run quota exceeded | Wait for the next period or upgrade |\n| 403 | CF-403 | Permission denied or workspace suspended | Check the key's role and workspace billing status |\n| 404 | CF-404 | Resource not found | Check the ID and that it belongs to your workspace |\n| 408 | CF-408 | Step or request timed out | See \"Timeout Errors\" |\n| 409 | CF-409 | Conflict, for example editing a workflow while it is published by someone else | Reload and retry |\n| 429 | CF-429 | Rate limit exceeded | See \"Handling HTTP 429\" |\n| 500 | CF-500 | Internal error | Retry with backoff; contact support with request_id if it persists |\n| 503 | CF-503 | Workflow engine temporarily unavailable | See \"CF-503 Errors\" |\n\n4xx errors other than 408 and 429 won't succeed on retry without changing the request.",
+    "tags": [
+      "api",
+      "errors"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-API-PAGINATION",
+    "doc_type": "article",
+    "title": "API Pagination",
+    "category": "api",
+    "content": "List endpoints (for example GET /v2/workflows and GET /v2/runs) use cursor pagination.\n\n- page_size: 1 to 100 (default 25).\n- The response includes \"data\" (items) and \"next_cursor\". Pass it as ?cursor=<next_cursor> to get the next page. When next_cursor is null, you have reached the end.\n- Cursors expire after 10 minutes. If you get CF-400 \"cursor expired\", start again from the first page.\n- Results are ordered newest first by created_at. Add ?order=asc for oldest first.\n\nUse page_size=100 to minimize requests and stay under your rate limit. Each page request counts as one request.",
+    "tags": [
+      "api",
+      "pagination"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-INT-SALESFORCE-V43",
+    "doc_type": "article",
+    "title": "Salesforce Integration (CloudFlow 4.3)",
+    "category": "integrations",
+    "content": "Applies to CloudFlow 4.3.\n\nIn CloudFlow 4.3, the Salesforce integration connects with OAuth 2.0 only. Username, password, and security-token authentication was removed in 4.3.\n\nTo connect:\n1. Go to Integrations > Salesforce > Connect.\n2. Sign in to Salesforce in the pop-up and click \"Allow\". CloudFlow stores an OAuth refresh token; it never sees your Salesforce password.\n3. In Salesforce Setup, the CloudFlow connected app's refresh-token policy must be \"Refresh token is valid until revoked\".\n\nTroubleshooting:\n- \"invalid_grant\" or \"expired access/refresh token\": the refresh token was revoked (for example by a Salesforce admin, a password policy, or a session-policy change). Click Integrations > Salesforce > Reconnect.\n- \"INSUFFICIENT_ACCESS\": the Salesforce user who authorized CloudFlow lacks object permissions. Reconnect with a user who has API Enabled and access to the objects used.\n- Changing your Salesforce password does not break a 4.3 OAuth connection, and re-entering a password or security token does not fix one.\n\nWorkflows that use Salesforce pause with error CF-401 while the connection is broken and resume after reconnecting. Failed runs can be re-run from Workflow History.",
+    "tags": [
+      "salesforce",
+      "oauth",
+      "version-specific"
+    ],
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-04-01",
+    "effective_from": "2026-04-01",
+    "deprecated_on": null,
+    "supersedes": "KB-INT-SALESFORCE-V42",
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-INT-SALESFORCE-V42",
+    "doc_type": "article",
+    "title": "Salesforce Integration (CloudFlow 4.2)",
+    "category": "integrations",
+    "content": "Applies to CloudFlow 4.2 only. Username-password authentication is deprecated (see DEP-SALESFORCE-PASSWORD-AUTH) and was removed in CloudFlow 4.3.\n\nIn CloudFlow 4.2, the Salesforce integration authenticates with a Salesforce username, password, and security token:\n\n1. Go to Integrations > Salesforce > Connect.\n2. Enter the Salesforce username and password, plus the security token (Salesforce: Settings > Reset My Security Token).\n3. Click \"Test connection\".\n\nIf the connection fails with \"INVALID_LOGIN\" after a Salesforce password change, Salesforce has issued a new security token. Re-enter the new password and token in CloudFlow.\n\nWe recommend upgrading to CloudFlow 4.3, which uses OAuth 2.0.",
+    "tags": [
+      "salesforce",
+      "version-specific",
+      "deprecated"
+    ],
+    "product_versions": [
+      "4.2"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-04-01",
+    "effective_from": "2025-09-15",
+    "deprecated_on": "2026-04-01",
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-INT-SLACK",
+    "doc_type": "article",
+    "title": "Slack Integration",
+    "category": "integrations",
+    "content": "To connect Slack, go to Integrations > Slack > Add to Slack and approve the requested scopes (chat:write, channels:read, groups:read, users:read). A Slack workspace admin may need to approve the app.\n\nSending messages to channels:\n- Public channels: the CloudFlow bot can post once it has chat:write. If the channel restricts posting, invite the bot with /invite @CloudFlow.\n- Private channels: you must invite the bot with /invite @CloudFlow first, or the step fails with \"channel_not_found\".\n\nCommon errors:\n- \"not_in_channel\" or \"channel_not_found\": invite the bot to the channel, or check that the channel ID hasn't changed (renaming is fine; deleting and recreating is not).\n- \"missing_scope\": your Slack admin changed app permissions. Reinstall via Integrations > Slack > Reconnect.\n- \"token_revoked\" or \"account_inactive\": the Slack app was uninstalled or the installing user was deactivated. Reconnect with an active Slack user.\n- \"ratelimited\": Slack is limiting messages (about 1 per second per channel). Add a delay step or batch messages.",
+    "tags": [
+      "slack"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-INT-GITHUB",
+    "doc_type": "article",
+    "title": "GitHub Integration",
+    "category": "integrations",
+    "content": "Connect GitHub from Integrations > GitHub > Install app, then choose all repositories or selected repositories.\n\nTriggers: push, pull request opened/merged, issue opened, release published. Actions: create issue, comment, add label, create release.\n\nTroubleshooting:\n- Trigger never fires: check that the repository is included in the GitHub App installation (GitHub > Settings > Applications > CloudFlow > Configure).\n- \"Resource not accessible by integration\": the app lacks permission for that action. Accept the updated permissions request in GitHub.\n- Organization repositories may require approval by an org owner.\n\nCloudFlow uses short-lived GitHub App installation tokens; you never need to paste a personal access token.",
+    "tags": [
+      "github"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-INT-GOOGLE-SHEETS",
+    "doc_type": "article",
+    "title": "Google Sheets Integration",
+    "category": "integrations",
+    "content": "Connect from Integrations > Google Sheets > Connect and sign in with Google.\n\nActions: append row, update row, look up row, read range. Triggers: new row, updated row (checked every 5 minutes on Free and Pro, every 1 minute on Business and Enterprise).\n\nTips:\n- The first row of the sheet must contain column headers; CloudFlow maps fields by header name.\n- Don't rename header columns that workflows use. Renamed columns cause \"column not found\" errors.\n- Google limits writes to about 60 per minute per user. For bulk data, use \"Append rows (batch)\" with up to 500 rows per step.\n- \"The caller does not have permission\": share the sheet with the Google account you connected, with Editor access.",
+    "tags": [
+      "google-sheets"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-INT-WEBHOOKS",
+    "doc_type": "article",
+    "title": "Webhook Integration",
+    "category": "integrations",
+    "content": "Incoming webhooks: when you use the Webhook trigger, CloudFlow generates a unique HTTPS URL. Send a POST with a JSON body (max 1 MB). CloudFlow responds 202 Accepted with a run_id.\n\nSecuring incoming webhooks: enable \"Require signature\" and sign each request body with HMAC-SHA256 using the webhook signing secret. Send the hex digest in the X-CloudFlow-Signature header. Unsigned or wrongly signed requests get 401 and no run starts.\n\nOutgoing webhooks (\"HTTP request\" step):\n- CloudFlow sends requests from published IP ranges (Settings > About > Egress IPs).\n- Responses with status 2xx count as success. 5xx and timeouts follow the step's retry policy. 4xx fails the step immediately.\n- Request timeout defaults to 30 seconds.\n\nRotate the signing secret from the trigger settings. The old secret keeps working for 24 hours so you can update senders.",
+    "tags": [
+      "webhook",
+      "hmac"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-TS-EXECUTION-FAILURES",
+    "doc_type": "article",
+    "title": "Workflow Execution Failures",
+    "category": "troubleshooting",
+    "content": "When a run fails:\n\n1. Open the run in Workflow History. The failed step is marked red, with an error code and message.\n2. Match the error:\n   - CF-400 in a step: a mapped field is empty or the wrong type. Check variable references; {{steps.x.output.y}} is empty if step x was skipped by a branch.\n   - CF-401 or CF-403: the integration connection expired or lacks permission. Reconnect it under Integrations.\n   - CF-402: the monthly run quota is exhausted.\n   - CF-408: a step timed out (see \"Timeout Errors\").\n   - CF-503: the workflow engine was temporarily unavailable (see \"CF-503 Errors\").\n3. Fix the cause, then click \"Re-run\" to replay the run with the same trigger data.\n\nWorkflows that fail 20 times in a row are switched Off automatically, and the workflow owner receives an email. Switch them back On after fixing the cause.\n\nWhen contacting support, include the run ID and error code. Don't include credentials.",
+    "tags": [
+      "failures",
+      "errors"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-TS-CF503",
+    "doc_type": "article",
+    "title": "CF-503 Errors",
+    "category": "troubleshooting",
+    "content": "CF-503 \"Workflow engine temporarily unavailable\" means CloudFlow could not start or continue a step because the workflow engine was overloaded or affected by an incident. It is a server-side error, not a problem with your workflow.\n\nWhat to do:\n1. Check https://status.cloudflow.example or ask support for current platform status. If the Workflow Engine is degraded, the issue is known and being worked on.\n2. On CloudFlow 4.3, steps that hit CF-503 are retried automatically by the default retry policy (3 attempts with backoff). On 4.2 there are no automatic retries by default; re-run failed runs from Workflow History, or configure a retry policy.\n3. For API calls that return 503, retry with exponential backoff.\n\nContact support if CF-503 persists for more than 15 minutes while the status page shows all systems operational. Include run IDs and timestamps with time zone.\n\nA single CF-503 does not count toward the 20-consecutive-failures auto-disable rule when it was retried successfully.",
+    "tags": [
+      "cf-503",
+      "incident",
+      "status"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-04-01",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-TS-TIMEOUTS",
+    "doc_type": "article",
+    "title": "Timeout Errors",
+    "category": "troubleshooting",
+    "content": "CF-408 means a step or run exceeded its time limit.\n\nTime limits by version:\n- CloudFlow 4.3: step timeout defaults to 300 seconds and can be raised up to 900 seconds per step (Step settings > Timeout). A whole run can last up to 60 minutes.\n- CloudFlow 4.2: step timeout is fixed at 300 seconds and a run can last up to 30 minutes.\n\nOutgoing HTTP request steps have their own 30-second default request timeout (max 120 seconds).\n\nHow to fix timeouts:\n- Use pagination or batches instead of processing everything in one step.\n- Split long work into several workflows chained with the \"Trigger workflow\" step.\n- For slow external APIs, raise the HTTP request timeout and make sure the endpoint responds quickly (for example return 202 and process in the background).\n- Loop steps: limit iterations or process items in batches of up to 500.\n\nOn 4.3, timeouts are retried by the default retry policy. Make sure the step is safe to repeat (idempotent) before relying on retries.",
+    "tags": [
+      "timeout",
+      "cf-408",
+      "version-specific"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-04-01",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-TS-AUTH-FAILURES",
+    "doc_type": "article",
+    "title": "Authentication Failures",
+    "category": "troubleshooting",
+    "content": "There are three different kinds of authentication failure:\n\n1. Signing in to the CloudFlow app:\n   - \"Invalid email or password\": reset your password (see \"Resetting Your Password\").\n   - \"Account locked\": wait 30 minutes after 10 failed attempts.\n   - SSO errors: contact your identity-provider admin. CloudFlow can't change your SSO password.\n2. API keys (CF-401): the key is missing, revoked, or sent without the \"Bearer \" prefix. Test with GET /v2/me. Create a new key if needed.\n3. Integration connections (CF-401 inside a step): the connected app revoked CloudFlow's access. Reconnect under Integrations. For Salesforce, the steps differ between CloudFlow 4.2 and 4.3.\n\nIf your workspace is suspended for non-payment, all API requests fail with CF-403, not CF-401.\n\nSupport will never ask for your password, API key, or tokens.",
+    "tags": [
+      "authentication",
+      "login",
+      "api"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-TS-MISSING-DATA",
+    "doc_type": "article",
+    "title": "Missing Workflow Data",
+    "category": "troubleshooting",
+    "content": "If runs or step data seem to be missing:\n\n1. Retention: runs older than your plan's history retention (Free 7, Pro 30, Business 90, Enterprise 365 days) are permanently deleted.\n2. Filters: clear Workflow History filters and check the date range and time zone. Timestamps use your profile time zone.\n3. Branches: steps in a branch that wasn't taken show as \"skipped\" and have no output.\n4. Masking: values detected as secrets are shown as ******** by design.\n5. Trigger never fired: check that the workflow is switched On, the trigger connection works, and the account isn't past_due, suspended, or out of run quota.\n6. Large outputs: step outputs over 256 KB are truncated in history; write large data to a file or sheet instead.\n\nDeleted workflows and expired history cannot be restored by support. Export history regularly if you need longer records.",
+    "tags": [
+      "history",
+      "missing-data",
+      "retention"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-ADV-CONFIG",
+    "doc_type": "article",
+    "title": "Advanced Workflow Configuration",
+    "category": "advanced",
+    "content": "Open a workflow and click Settings to configure:\n\n- Concurrency: maximum simultaneous runs of this workflow (1 to the plan's concurrent-run limit). Set it to 1 to process events strictly in order.\n- Error workflow: another workflow to run when this one fails. It receives the failed run ID and error.\n- Step timeouts and retry policies (see \"Timeout Errors\" and \"Workflow Retry Policies\").\n- Run data: turn off \"Store step inputs/outputs\" for workflows that handle sensitive data. History then keeps only status and timing.\n- Environments: CloudFlow 4.3 adds per-workflow environment variables (see \"Workflow Variables\").\n\nChanges apply to new runs only. Runs in progress keep the configuration they started with.",
+    "tags": [
+      "configuration",
+      "advanced"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-ADV-RETRY-V43",
+    "doc_type": "article",
+    "title": "Workflow Retry Policies (CloudFlow 4.3)",
+    "category": "advanced",
+    "content": "Applies to CloudFlow 4.3.\n\nEvery step has a retry policy. The default in 4.3 is:\n- 3 retries (4 attempts in total).\n- Exponential backoff: 2, 4, then 8 seconds, plus up to 1 second of random jitter.\n- Retries on CF-500, CF-503, CF-408 timeouts, network errors, and HTTP 5xx or 429 from outgoing HTTP steps.\n- No retries on other 4xx errors such as CF-400, CF-401, CF-403, or CF-404, because they won't succeed without a change.\n\nCustomize it in Step settings > Retry policy: 0 to 10 retries, initial delay 1 to 300 seconds, backoff multiplier 1 to 4. Set retries to 0 for steps that are not safe to repeat, such as charging a card without an idempotency key.\n\nEach retry is part of the same run and does not use an extra workflow run from your quota.",
+    "tags": [
+      "retry",
+      "backoff",
+      "version-specific"
+    ],
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-04-01",
+    "effective_from": "2026-04-01",
+    "deprecated_on": null,
+    "supersedes": "KB-ADV-RETRY-V42",
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-ADV-RETRY-V42",
+    "doc_type": "article",
+    "title": "Workflow Retry Policies (CloudFlow 4.2)",
+    "category": "advanced",
+    "content": "Applies to CloudFlow 4.2 only.\n\nIn CloudFlow 4.2, steps are not retried by default; a failed step fails the run.\n\nYou can turn on retries per workflow in Workflow settings > Retries:\n- Up to 3 retries.\n- Fixed delay of 30 seconds between attempts.\n- The setting applies to all steps in the workflow and retries on any error.\n\nPer-step retry policies and exponential backoff are available in CloudFlow 4.3.",
+    "tags": [
+      "retry",
+      "version-specific"
+    ],
+    "product_versions": [
+      "4.2"
+    ],
+    "authority_level": 1,
+    "last_updated": "2025-10-20",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-ADV-BRANCHES",
+    "doc_type": "article",
+    "title": "Conditional Branches",
+    "category": "advanced",
+    "content": "Add a \"Branch\" step to run different steps depending on data.\n\n- Each branch has conditions such as {{trigger.body.amount}} greater than 1000, or {{steps.lookup.output.status}} equals \"vip\". Combine conditions with AND or OR.\n- Branches are checked top to bottom; the first match runs. Add an \"Otherwise\" branch for everything else.\n- Steps in branches that don't run are marked \"skipped\" in history. Later steps that reference their outputs get empty values. Use the \"Merge\" step and default values ({{steps.x.output.y | default: \"none\"}}) to avoid CF-400 errors.\n- Comparisons are type-aware: \"10\" (text) is not equal to 10 (number). Use the to_number filter when comparing numbers from webhooks.",
+    "tags": [
+      "branches",
+      "conditions"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-ADV-VARIABLES",
+    "doc_type": "article",
+    "title": "Workflow Variables",
+    "category": "advanced",
+    "content": "Variables let you reuse values across steps.\n\n- Trigger data: {{trigger.body.field}}, {{trigger.headers.name}}.\n- Step outputs: {{steps.<step_key>.output.<field>}}. The step key is shown in each step's settings and doesn't change when you rename the step.\n- Built-ins: {{run.id}}, {{run.started_at}}, {{workflow.id}}.\n- Filters: default, upper, lower, to_number, date_format, json.\n\nWorkspace variables (Settings > Variables) store values shared across workflows. Mark a variable \"Secret\" to store credentials. Secret values are encrypted, never shown again after saving, and masked in history and logs.\n\nCloudFlow 4.3 adds environment variables per workflow (Workflow settings > Environment), for example a different Slack channel for staging and production.\n\nNever put credentials in plain variables or step text fields; use Secret variables or integration connections.",
+    "tags": [
+      "variables",
+      "secrets"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-ADV-MONITORING",
+    "doc_type": "article",
+    "title": "Workflow Monitoring",
+    "category": "advanced",
+    "content": "Ways to monitor workflows:\n\n- Dashboard: Workflows > Monitoring shows success rate, run volume, average duration, and the most frequent errors for the last 24 hours, 7 days, or 30 days.\n- Alerts: Workflow settings > Alerts sends email or Slack notifications when a run fails, when the failure rate is over a threshold, or when a run takes longer than expected.\n- Error workflows: run a workflow automatically when another fails (see \"Advanced Workflow Configuration\").\n- API: GET /v2/runs?status=failed&since=<ISO timestamp> to integrate with your own monitoring.\n- Platform status: https://status.cloudflow.example shows incidents affecting the API, workflow engine, dashboard, and integrations. Subscribe for email updates.\n\nSet alerts for business-critical workflows instead of relying on the 20-consecutive-failures auto-disable email.",
+    "tags": [
+      "monitoring",
+      "alerts"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-SEC-BEST-PRACTICES",
+    "doc_type": "article",
+    "title": "Security Best Practices",
+    "category": "account",
+    "content": "Recommended security settings for CloudFlow workspaces:\n\n- Require 2FA for all members (Settings > Workspace > Security).\n- Use SAML SSO on Business and Enterprise plans.\n- Give people the least-privileged role they need. Use the Billing role for finance staff.\n- Store credentials only in Secret variables or integration connections, never in step text, workflow names, or support tickets.\n- Rotate API keys every 90 days and revoke unused keys.\n- Turn on webhook signature verification for webhook triggers.\n- Review the audit log (Settings > Audit log, Business and Enterprise) for unexpected key creation or role changes.\n\nIf you suspect a compromise, such as an exposed API key, unknown members, or workflows you didn't create, revoke the affected keys, remove unknown members, and contact support right away. Security incidents are handled by a human security team.",
+    "tags": [
+      "security",
+      "best-practices"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-DATA-RETENTION",
+    "doc_type": "article",
+    "title": "Data Retention and Deletion",
+    "category": "account",
+    "content": "- Workflow run history is kept for your plan's retention period (Free 7, Pro 30, Business 90, Enterprise 365 days), then permanently deleted.\n- Deleted workflows go to Trash for 14 days and can be restored by an Admin or Owner during that time.\n- Cancelled workspaces keep data for 30 days, then it is permanently deleted.\n- Audit logs are kept for 1 year on Business and Enterprise plans.\n- Invoices are kept for 7 years for accounting purposes.\n\nTo request deletion of personal data for a specific user, the workspace Owner must submit a data deletion request to support. Requests are handled by a human privacy team within 30 days.",
+    "tags": [
+      "retention",
+      "privacy",
+      "deletion"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "KB-SUPPORT-CONTACT",
+    "doc_type": "article",
+    "title": "Contacting CloudFlow Support",
+    "category": "getting_started",
+    "content": "How to reach support depends on your plan's support tier:\n- Free: community forum.\n- Pro: email support@cloudflow.example, first response within 1 business day.\n- Business: priority email and chat, first response within 4 business hours.\n- Enterprise: dedicated support 24/7, first response within 1 hour for urgent issues.\n\nInclude: your account ID (Settings > About), CloudFlow version, run IDs or request IDs, error codes, and timestamps with time zone.\n\nNever include passwords, API keys, tokens, full card numbers, or other secrets. If you sent one by mistake, rotate it immediately.\n\nSupport staff can only discuss an account with verified members of that account.",
+    "tags": [
+      "support",
+      "contact"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 1,
+    "last_updated": "2026-05-12",
+    "effective_from": "2025-09-15",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "RN-CLOUDFLOW-4.3",
+    "doc_type": "release_note",
+    "title": "CloudFlow 4.3 Release Notes",
+    "category": "release_notes",
+    "content": "CloudFlow 4.3 was released on 2026-04-01. Changes from 4.2:\n\n- API rate limits are now enforced per workspace across all API keys, using a sliding 60-second window. 429 responses include a Retry-After header. (In 4.2, limits were per API key with a fixed calendar-minute window.)\n- Salesforce integration uses OAuth 2.0 only. Username, password, and security-token authentication was removed.\n- Workflow History export moved to Settings > Data > Export Workflow History. It supports CSV and JSON and up to 90 days per export, runs in the background, and has no row limit. (4.2: CSV only, 30 days, 10,000 rows.)\n- Steps now retry by default (3 retries with exponential backoff). In 4.2 there were no default retries.\n- Step timeout is configurable up to 900 seconds, and runs can last up to 60 minutes.\n- New per-workflow environment variables.\n\nCloudFlow 4.2 remains supported. Features documented for 4.2 continue to work on 4.2 except where a deprecation notice says otherwise.",
+    "tags": [
+      "release-notes",
+      "4.3"
+    ],
+    "product_versions": [
+      "4.3"
+    ],
+    "authority_level": 2,
+    "last_updated": "2026-04-01",
+    "effective_from": "2026-04-01",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  },
+  {
+    "source_id": "DEP-SALESFORCE-PASSWORD-AUTH",
+    "doc_type": "release_note",
+    "title": "Deprecation Notice: Salesforce Username-Password Authentication",
+    "category": "release_notes",
+    "content": "Salesforce username, password, and security-token authentication is deprecated as of 2026-04-01.\n\n- CloudFlow 4.3: removed. Only OAuth 2.0 connections are supported.\n- CloudFlow 4.2: still works but is deprecated and receives no fixes. Plan to upgrade to 4.3 and reconnect Salesforce with OAuth.\n\nCustomers on 4.3 should not re-enter a Salesforce password or security token to fix a connection. Use Integrations > Salesforce > Reconnect instead.",
+    "tags": [
+      "deprecation",
+      "salesforce"
+    ],
+    "product_versions": [
+      "4.2",
+      "4.3"
+    ],
+    "authority_level": 2,
+    "last_updated": "2026-04-01",
+    "effective_from": "2026-04-01",
+    "deprecated_on": null,
+    "supersedes": null,
+    "provenance": "synthetic",
+    "synthetic": true
+  }
+]
