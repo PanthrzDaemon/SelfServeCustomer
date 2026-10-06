@@ -52,15 +52,27 @@ Decision rules:
 
 PASS:
 Use PASS when the answer is factually correct, supported
-by the context, directly answers the question, and is safe.
+by the available context, and safely answers the customer's
+main question.
+
+Extra correct information is allowed and should NOT cause
+a revision.
 
 REVISE:
 Use REVISE ONLY when there is an actual factual,
-grounding, relevance, or safety problem that can be
-fixed using the available context.
+grounding, relevance, or safety problem.
 
-Do NOT choose REVISE just because the answer could be
-longer, more detailed, or more polite.
+Do NOT choose REVISE because:
+- the answer contains extra correct information
+- the answer could be shorter
+- the answer could be more detailed
+- the wording could be improved
+- the answer uses a slightly different but correct phrasing
+
+ESCALATE:
+Use ESCALATE when the question cannot be safely or
+reliably answered using the available information.
+
 
 ESCALATE:
 Use ESCALATE when the question cannot be safely or

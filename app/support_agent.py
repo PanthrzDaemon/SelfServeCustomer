@@ -11,6 +11,7 @@ from app.tools import (
     get_plan_limits,
     check_platform_status,
 )
+from app.critic import critique_answer
 
 
 # --------------------------------------------------
@@ -23,20 +24,26 @@ AUTHENTICATED_ACCOUNT_ID = "A1001"
 # --------------------------------------------------
 # RAG Knowledge Base Tool
 # --------------------------------------------------
-
 @tool
 def search_knowledge_base(question: str):
     """
-    Search the CloudFlow knowledge base for help-center
-    and documentation information.
+    Search CloudFlow documentation and help-center articles.
 
-    Use this tool for questions about:
-    - CloudFlow policies
-    - product features
+    IMPORTANT:
+    Use this tool for general product/documentation questions,
+    including:
     - storage limits
-    - password reset
+    - Pro plan features
+    - Business plan features
+    - Enterprise plan features
+    - password reset policies
     - billing policies
-    - general CloudFlow documentation
+
+    For example, use this tool when the customer asks:
+    "How much storage does the Pro plan provide?"
+
+    Do NOT use customer-specific backend tools for general
+    documentation questions.
     """
     results = search_knowledge(question, top_k=3)
 
@@ -52,7 +59,7 @@ def search_knowledge_base(question: str):
         })
 
     return knowledge
-
+    
 
 # --------------------------------------------------
 # Account Tool
@@ -64,10 +71,10 @@ def get_current_account():
     Get information about the currently authenticated
     CloudFlow customer.
 
-    Use this tool for questions such as:
-    - What plan am I on?
-    - What is my account status?
-    - What is my account information?
+    Use this for questions about:
+    - current plan
+    - account status
+    - account information
     """
     return lookup_account(AUTHENTICATED_ACCOUNT_ID)
 
@@ -75,15 +82,27 @@ def get_current_account():
 # --------------------------------------------------
 # Usage Tool
 # --------------------------------------------------
-
 @tool
 def get_current_usage():
     """
-    Get storage usage for the currently authenticated
-    CloudFlow customer.
+    Get ONLY the amount of storage currently USED by the
+    authenticated customer.
+
+    IMPORTANT:
+    This tool does NOT tell how much storage the customer's
+    plan PROVIDES.
+
+    Use this tool ONLY for questions like:
+    - How much storage have I used?
+    - How much storage am I currently using?
+    - What percentage of storage have I used?
+
+    Do NOT use this tool for:
+    - How much storage does my plan provide?
+    - What is my storage limit?
+    - How much storage is included in Pro?
     """
     return get_usage(AUTHENTICATED_ACCOUNT_ID)
-
 
 # --------------------------------------------------
 # Invoice Tool
@@ -92,8 +111,7 @@ def get_current_usage():
 @tool
 def get_current_invoices():
     """
-    Get invoices for the currently authenticated
-    CloudFlow customer.
+    Get invoices for the currently authenticated customer.
     """
     return get_invoices(AUTHENTICATED_ACCOUNT_ID)
 
@@ -105,13 +123,10 @@ def get_current_invoices():
 @tool
 def get_current_plan_limits():
     """
-    Get the storage limit associated with the
-    customer's current plan.
+    Get the storage limit associated with the customer's
+    current subscription plan.
 
-    Use this when the customer asks how much storage
-    their plan provides.
-
-    Do not use this to identify the customer's plan.
+    Use this when asking how much storage the plan provides.
     """
     account = lookup_account(AUTHENTICATED_ACCOUNT_ID)
 
@@ -134,7 +149,7 @@ def get_platform_status():
 
 
 # --------------------------------------------------
-# All Agent Tools
+# Agent Tools
 # --------------------------------------------------
 
 AGENT_TOOLS = [
@@ -142,7 +157,7 @@ AGENT_TOOLS = [
     get_current_account,
     get_current_usage,
     get_current_invoices,
-    get_current_plan_limits,
+    # get_current_plan_limits,
     get_platform_status,
 ]
 
@@ -199,32 +214,58 @@ graph = builder.compile()
 
 
 # --------------------------------------------------
+# Run Support Question
+# --------------------------------------------------
+
+def run_support_question(question: str):
+
+    result = graph.invoke({
+        "messages": [
+            {
+                "role": "user",
+                "content": question
+            }
+        ]
+    })
+
+    answer = result["messages"][-1].content
+
+    # Collect tool results as critic context
+    context_parts = []
+
+    for message in result["messages"]:
+        if message.type == "tool":
+            context_parts.append(message.content)
+
+    context = "\n\n".join(context_parts)
+
+    # Run critic
+    critic_result = critique_answer(
+        question=question,
+        answer=answer,
+        context=context
+    )
+
+    return answer, critic_result
+
+
+# --------------------------------------------------
 # Test
 # --------------------------------------------------
 
 if __name__ == "__main__":
 
-    questions = [
-        "How much storage does the Pro plan provide?",
-        "How much storage have I used?",
-        "What plan am I currently on?",
-        "Can I reset my CloudFlow password?",
-        "Is the CloudFlow platform operational?",
-    ]
+    question = "How much storage does the Pro plan provide?"
 
-    for question in questions:
+    answer, critic_result = run_support_question(question)
 
-        print("\n" + "=" * 60)
-        print("QUESTION:", question)
+    print("\n" + "=" * 60)
 
-        result = graph.invoke({
-            "messages": [
-                {
-                    "role": "user",
-                    "content": question
-                }
-            ]
-        })
+    print("\nQUESTION:")
+    print(question)
 
-        print("\nFINAL ANSWER:")
-        print(result["messages"][-1].content)
+    print("\nFINAL ANSWER:")
+    print(answer)
+
+    print("\nCRITIC RESULT:")
+    print(critic_result)
