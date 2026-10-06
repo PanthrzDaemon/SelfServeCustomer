@@ -1,0 +1,24 @@
+# Virtual environments
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local configuration (never commit real values)
+.env
+
+# Generated data stores
+chroma/
+*.db
+*.db.tmp
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
+
+# Evaluation output
+reports/
